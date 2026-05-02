@@ -1,0 +1,6 @@
+kafka-python
+pyspark==3.5.0
+qdrant-client
+sentence-transformers
+pandas
+torch
