@@ -66,17 +66,26 @@ cd real-time_context-engineering_project
 ```bash
 docker-compose up -d
 ```
-**3. Start the Event Simulator:**
+**3. Initialize the local environment**
+```bash
+# Create Virtual Environment
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+
+# Install Dependencies
+pip install -r requirements.txt
+```
+**4. Start the Event Simulator:**
 Generates realistic user clickstream and error logs.
 ```bash
 python event_simulator.py
 ```
-**4. Start the Spark Streaming Engine:**
+**5. Start the Spark Streaming Engine:**
 Consumes Kafka topics, vectorizes text locally, and upserts to Qdrant.
 ```bash
 python streaming_brain.py
 ```
-**5. Trigger the AI Agent:**
+**6. Trigger the AI Agent:**
 Executes the Hybrid Search to fetch a specific user's real-time context.
 ```bash
 python ai_agent.py
