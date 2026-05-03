@@ -36,9 +36,7 @@ graph LR
 ## Key Engineering Challenges Solved
 
 ### 1. Bypassing the LLM API Rate-Limiting Trap
-When calling AI models within a distributed Spark job, executing row-by-row can easily DDoS external APIs (like OpenAI) and accrue massive costs.
-
-**The Fix:** To ensure high throughput and zero API costs, this pipeline utilizes ```foreachBatch``` to pull micro-batches to the driver and runs a lightweight, open-source HuggingFace embedding model locally, avoiding external API rate limits entirely.
+A primary design objective for this architecture was to deliver a high-performance solution using entirely free, open-source technologies. When calling AI models within distributed Spark jobs, row-by-row execution can unintentionally DDoS external APIs and incur significant costs. To ensure zero API overhead and high throughput, this pipeline utilizes foreachBatch to pull micro-batches to the driver and runs a lightweight HuggingFace embedding model locally, avoiding external rate limits and proprietary tool dependencies entirely.
 
 ### 2. Overcoming "Semantic Bias" via Hybrid Search
 By default, Vector Databases retrieve data based purely on mathematical meaning, ignoring time. If an AI agent looks for an "error", a standard Vector DB might fetch an error from 3 weeks ago rather than a shopping cart action from 10 seconds ago.
