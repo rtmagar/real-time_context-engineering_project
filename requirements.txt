@@ -1,3 +1,4 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
 kafka-python
 pyspark==3.5.0
 qdrant-client
